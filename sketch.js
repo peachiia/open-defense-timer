@@ -51,7 +51,7 @@ function drawTimer()
 {
     if (isTimerEnabled) {
         if (h > 0) {
-            timerText = h.toString();
+            timerText = h.toString() + ":";
         }
         else {
             timerText = "";
