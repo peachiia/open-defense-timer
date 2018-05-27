@@ -1,7 +1,7 @@
 var canvas;
 var isTimerEnabled;
-var startDate;
-var endDate;
+var isRunning;
+var counter;
 
 function setup() {
     canvas = createCanvas(window.innerWidth, window.innerHeight);
@@ -17,10 +17,13 @@ function draw() {
 
 function keyPressed() {
     if(keyCode == 32 || keyCode == 13) { // spacebar or enter
-        startDate = new Date();
         isTimerEnabled = true;
-    } else if (keyCode == 27) { // escape
+        isRunning = !isRunning;
+    } 
+    else if (keyCode == 27) { // escape
+        counter = 0;
         isTimerEnabled = false;
+        isRunning = false;
     }
     else if (keyCode == 84) { // 't'
         alarm.play();
@@ -30,21 +33,28 @@ function keyPressed() {
 
 function canvasInit()
 {
-    timerCounter = 0;
+    counter = 0;
     isTimerEnabled = false;
-
-    startDate = new Date();
+    isRunning = false;
 
     alarm = loadSound("/assets/alarm.mp3");
+
+    setInterval(clockTick, 1000);
 }
 
 function updateTimer()
 {
-    endDate   = new Date();
-    totalseconds = Math.floor((endDate.getTime() - startDate.getTime()) / 1000);
+    totalseconds = counter;
     s = Math.floor(totalseconds%60);
     m = Math.floor((totalseconds/60)%60);
     h = Math.floor(totalseconds/3600);
+}
+
+function clockTick()
+{
+    if (isRunning) {
+        counter++;
+    }
 }
 
 function drawTimer()
