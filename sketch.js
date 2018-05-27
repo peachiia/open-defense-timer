@@ -21,6 +21,9 @@ function keyPressed() {
     } else if (keyCode == 27) { // escape
         isTimerEnabled = false;
     }
+    else if (keyCode == 84) { // 't'
+        alarm.play();
+    }
     return 0;
 }
 
@@ -31,9 +34,7 @@ function canvasInit()
 
     startDate = new Date();
 
-    alarm_15 = loadSound("/assets/alarm_15.mp3");
-    alarm_18 = loadSound("/assets/alarm_18.mp3");
-    alarm_20 = loadSound("/assets/alarm_20.mp3");
+    alarm = loadSound("/assets/alarm.mp3");
 }
 
 function updateTimer()
