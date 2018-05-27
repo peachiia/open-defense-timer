@@ -12,6 +12,7 @@ function draw() {
     background(0);
     updateTimer();
     drawTimer();
+    taskAlarm();
 }
 
 function keyPressed() {
@@ -66,4 +67,20 @@ function drawTimer()
     textSize(width/4);
     textAlign(CENTER, CENTER);
     text(timerText, width/2, height/2);
+}
+
+function taskAlarm()
+{
+    if (isTimerEnabled) {
+        switch(totalseconds) {
+            case 900:
+            case 1080:
+            case 1081:
+            case 1200:
+            case 1201:
+            case 1202: {
+                alarm.play();
+            }
+        }
+    }
 }
