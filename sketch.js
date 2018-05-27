@@ -59,7 +59,7 @@ function drawTimer()
         timerText += m.toString().padStart(2, '0') + ":" + s.toString().padStart(2, '0');
     }
     else {
-        timerText = "---";
+        timerText = "BME08";
     }
 
     fill(255);
